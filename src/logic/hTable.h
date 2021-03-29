@@ -1,3 +1,8 @@
+#ifndef HTABLE_H_INCLUDED
+#define HTABLE_H_INCLUDED
+
+#include "ll.h"
+
 #define HASHSIZE 101    // Maximum number of collision lists in hash table
 
 // Key-value pair
@@ -25,3 +30,5 @@ void add(HashTable *self, char *key, char *value);
 
 // Frees resources associated with HashTable object
 void destroyHashTable(HashTable *self);
+
+#endif // HTABLE_H_INCLUDED

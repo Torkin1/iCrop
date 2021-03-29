@@ -1,3 +1,6 @@
+#ifndef LL_H_INCLUDED
+#define LL_H_INCLUDED
+
 // The fundamental element of linked list
 typedef struct structNode{
 
@@ -23,3 +26,5 @@ int popLL(Node **headAddr, int index, char **destination);
 
 // Returns leńgth of list
 int lenLL(Node *current);
+
+#endif // LL_H_INCLUDED
