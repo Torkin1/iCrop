@@ -1,5 +1,5 @@
 CC=gcc
-OUT=bin/Debug/iCrop
+OUT=../../bin/Debug/iCrop
 IM_VERSION:=$(shell convert -version | grep Version | awk '{print $$3}' | awk -F . '{print $$1}')
 
 all: *.c

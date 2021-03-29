@@ -4,6 +4,7 @@
 	<Project>
 		<Option title="iCrop" />
 		<Option makefile_is_custom="1" />
+		<Option execution_dir="src/logic" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -40,8 +41,22 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Makefile" />
-		<Unit filename="main.c">
+		<Unit filename="src/logic/Makefile" />
+		<Unit filename="src/logic/hTable.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/logic/hTable.h" />
+		<Unit filename="src/logic/ll.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/logic/ll.h" />
+		<Unit filename="src/logic/logger.c">
+			<Option compilerVar="CPP" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="src/logic/logger.h" />
+		<Unit filename="src/logic/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
