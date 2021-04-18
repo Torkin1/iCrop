@@ -8,7 +8,7 @@
 #include "ll.h"
 #include "logger.h"
 
-Node *makeNode (char *value){
+Node *newNode (char *value){
 
 	Node *head = calloc(1, sizeof(Node));
 	head -> value = value;
@@ -32,12 +32,12 @@ void printLL(Node *current, char *format){
 	free(buffer);
 }
 
-void deleteLL (Node *current){
+void destroyLL (Node *current){
 
 	if (current == NULL) return;
 	else {
 
-		deleteLL (current -> next);
+		destroyLL (current -> next);
 		free (current);
 
 	}
@@ -48,7 +48,7 @@ void appendLL(Node **currentAddr, char *value){
 
 	if (*currentAddr == NULL){
 
-		*currentAddr = makeNode(value);
+		*currentAddr = newNode(value);
 	}
 
 	else {

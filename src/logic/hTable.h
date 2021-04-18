@@ -20,13 +20,13 @@ typedef struct {
 } HashTable;
 
 // Creates an HashTable
-HashTable *makeHashTable();
+HashTable *newHashTable();
 
 // Returns value paired with given key if present in table, NULL otherwise
-char* getValue(HashTable *self, char* key);
+char* getValueFromHashTable(HashTable *self, char* key);
 
 // Adds given pair key-value
-void add(HashTable *self, char *key, char *value);
+void addToHashTable(HashTable *self, char *key, char *value);
 
 // Frees resources associated with HashTable object
 void destroyHashTable(HashTable *self);

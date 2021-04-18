@@ -46,6 +46,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/logic/hTable.h" />
+		<Unit filename="src/logic/http.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/logic/http.h" />
+		<Unit filename="src/logic/httpParser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/logic/httpParser.h" />
 		<Unit filename="src/logic/ll.c">
 			<Option compilerVar="CC" />
 		</Unit>

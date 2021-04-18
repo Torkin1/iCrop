@@ -22,7 +22,7 @@ unsigned hash(char *key){
 }
 
 // Creates an HashTable
-HashTable *makeHashTable(){
+HashTable *newHashTable(){
 
     HashTable *hashTable = calloc(1, sizeof(HashTable));
     return hashTable;
@@ -35,7 +35,7 @@ Entry *getCollisionList (HashTable *self, unsigned hash){
 }
 
 // Returns value paired with given key if present in table, NULL otherwise
-char* getValue(HashTable *self, char* key){
+char* getValueFromHashTable(HashTable *self, char* key){
 
     // gets collision list at calculated hash
     unsigned h = hash(key);
@@ -57,7 +57,7 @@ char* getValue(HashTable *self, char* key){
 }
 
 // Adds given pair key-value
-void add(HashTable *self, char *key, char *value){
+void addToHashTable(HashTable *self, char *key, char *value){
 
     // calculates target index
     unsigned h = hash(key);
@@ -72,7 +72,7 @@ void add(HashTable *self, char *key, char *value){
     if(collisionList == NULL){
 
         // Adds new collisionList to table paired with calculated hash
-        (self -> table)[(int)h] = makeNode(pair);
+        (self -> table)[(int)h] = newNode(pair);
 
     } else {
 
@@ -107,7 +107,7 @@ void destroyHashTable(HashTable *self){
         }
 
         // deletes collision list
-        deleteLL(currentCollisionList);
+        destroyLL(currentCollisionList);
     }
 
     // Deletes reference to hash table

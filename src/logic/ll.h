@@ -10,13 +10,13 @@ typedef struct structNode{
 } Node;
 
 // Creates a node with given value
-Node *makeNode (char *value);
+Node *newNode (char *value);
 
 // prints content of linked list using given format string
 void printLL (Node *current, char *format);
 
 // frees memory associated with ll
-void deleteLL (Node *current);
+void destroyLL (Node *current);
 
 // creates a node with given value and adds it to the end of list
 void appendLL (Node **currentAddr, char *value);
