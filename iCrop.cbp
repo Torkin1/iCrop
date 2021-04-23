@@ -41,6 +41,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="src/logic/ImageController.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/logic/Makefile" />
 		<Unit filename="src/logic/hTable.c">
 			<Option compilerVar="CC" />
@@ -69,6 +72,8 @@
 		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
+			<code_completion />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
