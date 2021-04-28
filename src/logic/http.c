@@ -54,6 +54,7 @@ void initHttpStructures(){
     // initialize HEADER_NAMES
     HEADER_NAMES[ACCEPT] = "Accept";
     HEADER_NAMES[CONTENT_TYPE] = "Content-Type";
+    HEADER_NAMES[CONTENT_LENGTH] = "Content-Length";
 
 }
 

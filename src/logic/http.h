@@ -7,23 +7,22 @@
 
 #include "hTable.h"
 
-//TODO: move these constants in parser header file
-#define HTTP_LINE_SEPARATOR '\n'
+#define HTTP_LINE_SEPARATOR "\n"
 #define HTTP_STARTBODY_SEPARATOR "\n\n"
-#define HTTP_WORD_SEPARATOR ' '
+#define HTTP_WORD_SEPARATOR " "
+#define HTTP_HEADER_NAME_VALUE_SEPARATOR ":"
 
-// request methods
 typedef enum {
 
-    GET,        // requests a representation of the specified resource
-    POST,       // used to submit an entity to the specified resource
-    OPTIONS,    // used to describe the communication options for the target resource.
-    HEAD,       // asks for a response identical to that of a GET request, but without the response body.
-    PUT,        // replaces all current representations of the target resource with the request payload.
-    DELETE,     // deletes the specified resource.
-    TRACE,      // performs a message loop-back test along the path to the target resource.
-    CONNECT,    // establishes a tunnel to the server identified by the target resource.
-    NUM_OF_METHODS
+    GET = 1,                // requests a representation of the specified resource
+    POST,               // used to submit an entity to the specified resource
+    OPTIONS,            // used to describe the communication options for the target resource.
+    HEAD,               // asks for a response identical to that of a GET request, but without the response body.
+    PUT,                // replaces all current representations of the target resource with the request payload.
+    DELETE,             // deletes the specified resource.
+    TRACE,              // performs a message loop-back test along the path to the target resource.
+    CONNECT,            // establishes a tunnel to the server identified by the target resource.
+    NUM_OF_METHODS = 8  // TODO: update manually every time a new method is added
 
 } Method;
 
@@ -68,6 +67,7 @@ typedef enum {
 
     ACCEPT,             // Which content the client is able to understand
     CONTENT_TYPE,       // Media type of resource
+    CONTENT_LENGTH,     // size of the entity-body, in bytes
     NUM_OF_HEADERS
 
 } Header;

@@ -37,17 +37,19 @@ Entry *getCollisionList (HashTable *self, unsigned hash){
 // Returns value paired with given key if present in table, NULL otherwise
 char* getValueFromHashTable(HashTable *self, char* key){
 
-    // gets collision list at calculated hash
-    unsigned h = hash(key);
-    Entry *collisionList = getCollisionList(self, h);
+    if (key != NULL){
+        // gets collision list at calculated hash
+        unsigned h = hash(key);
+        Entry *collisionList = getCollisionList(self, h);
 
-    if (collisionList != NULL){
+        if (collisionList != NULL){
 
-        // There is at least one value associated with given hash. Returns the value associated with the given key
-        for (Entry *currentEntryPointer = collisionList; currentEntryPointer != NULL; currentEntryPointer = (currentEntryPointer -> next)){
-            Pair *pair = currentEntryPointer -> value;
-            if (strcmp(pair -> key, key) == 0){
-                return pair -> value;
+            // There is at least one value associated with given hash. Returns the value associated with the given key
+            for (Entry *currentEntryPointer = collisionList; currentEntryPointer != NULL; currentEntryPointer = (currentEntryPointer -> next)){
+                Pair *pair = currentEntryPointer -> value;
+                if (strcmp(pair -> key, key) == 0){
+                    return pair -> value;
+                }
             }
         }
     }
@@ -59,39 +61,47 @@ char* getValueFromHashTable(HashTable *self, char* key){
 // Adds given pair key-value
 void addToHashTable(HashTable *self, char *key, char *value){
 
-    // calculates target index
-    unsigned h = hash(key);
+    if (key != NULL)
+    {
+        // calculates target index
+        unsigned h = hash(key);
 
-    // Creating a new pair with given key and value
-    Pair *pair = calloc(1, sizeof(Pair));
-    pair -> key = key;
-    pair -> value = value;
+        // Creating a new pair with given key and value
+        Pair *pair = calloc(1, sizeof(Pair));
+        pair -> key = key;
+        pair -> value = value;
 
-    // Checks if already exists an entry in table with given hash
-    Entry *collisionList = getCollisionList(self, h);
-    if(collisionList == NULL){
+        // Checks if already exists an entry in table with given hash
+        Entry *collisionList = getCollisionList(self, h);
+        if(collisionList == NULL)
+        {
 
-        // Adds new collisionList to table paired with calculated hash
-        (self -> table)[(int)h] = newNode(pair);
+            // Adds new collisionList to table paired with calculated hash
+            (self -> table)[(int)h] = newNode(pair);
 
-    } else {
-
-        // Must check if key is already bound to a value
-        Pair *currentPair;
-        for (Entry *current = collisionList; current != NULL; current = current -> next){
-            currentPair = current -> value;
-            if (strcmp(currentPair -> key, key) == 0){
-
-                // A pair already exists, dropping new pair and updating old pair it with new value
-                free(pair);
-                currentPair -> value = value;
-                return;
-            }
         }
+        else
+        {
 
-        // No pair was found, adding a new one
-        appendLL((self -> table) + (int) h, pair);
+            // Must check if key is already bound to a value
+            Pair *currentPair;
+            for (Entry *current = collisionList; current != NULL; current = current -> next)
+            {
+                currentPair = current -> value;
+                if (strcmp(currentPair -> key, key) == 0)
+                {
 
+                    // A pair already exists, dropping new pair and updating old pair it with new value
+                    free(pair);
+                    currentPair -> value = value;
+                    return;
+                }
+            }
+
+            // No pair was found, adding a new one
+            appendLL((self -> table) + (int) h, pair);
+
+        }
     }
 }
 void destroyHashTable(HashTable *self){

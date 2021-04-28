@@ -6,6 +6,7 @@
 #include "hTable.h"
 #include "logger.h"
 #include "http.h"
+#include "httpParser.h"
 
 #if IM_VERSION > 6
     #include <MagickWand/MagickWand.h>
