@@ -1,4 +1,4 @@
-# iCrop
+# iCrop (DEAD)
 
 A dynamic webserver performing static content adaptation.  
 
